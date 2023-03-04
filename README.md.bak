@@ -1,0 +1,7 @@
+Create database and import db 
+(database in side sql_database folder )
+
+then open .evn file and edit 
+DB_DATABASE=
+DB_USERNAME=
+DB_PASSWORD=

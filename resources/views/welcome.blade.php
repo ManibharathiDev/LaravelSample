@@ -1,0 +1,1 @@
+<a href="{{ route('order.list') }}" >Order Page</a>
