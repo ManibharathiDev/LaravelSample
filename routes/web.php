@@ -17,9 +17,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 use App\Http\Controllers\OrderController;
-Route::get('/order', [OrderController::class,'index'])->name('order.list');;
-Route::get('/order/json/{id}', [OrderController::class,'json'])->name('order.json');;
-Route::get('/order/create', [OrderController::class,'create'])->name('order.create');;
+Route::get('/order', [OrderController::class,'index'])->name('order.list');
+Route::get('/order/json/{id}', [OrderController::class,'json'])->name('order.json');
+Route::get('/order/create', [OrderController::class,'create'])->name('order.create');
 
 
 

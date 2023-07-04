@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Order;
 use App\Models\ItemDetail;
+use DateHelper;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Validator;
 
@@ -16,8 +17,14 @@ class OrderController extends Controller
     //
 	
 	public function index() { 
-	 $order = Order::get();
+
+	//DateHelper::convertMillisToDate(1688481829705);	
+	DateHelper::convertMillisToDate(floor(microtime(true) * 1000));
+	//echo DateHelper::getIndiaDateFormat();	
+	//  $order = Order::get();
+	 $order = Order::paginate(10);
 	 return view('order.index',compact('order'));
+	 //return json_encode($order);
    }
    
    public function json($id) { 
@@ -94,7 +101,7 @@ class OrderController extends Controller
    { 
 	 $order = Order::find($id);
         
-        return view('order.view')->with('order',$order);
+     return view('order.view')->with('order',$order);
    }
    
    public function edit($id) 
@@ -121,6 +128,8 @@ class OrderController extends Controller
 		try {
 		DB::beginTransaction();
         $order=Order::find($id);
+
+		
 		$order->order_no=$request->order_no;
 		$order->order_date=$request->order_date;
 		$order->customer_no=$request->customer_no;
